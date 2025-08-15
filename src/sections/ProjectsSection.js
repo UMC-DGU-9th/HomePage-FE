@@ -51,9 +51,9 @@ const Thumb = styled.div`
   position: relative;
   width: 100%;
   height: 60%;
-  background: radial-gradient(600px 400px at 50% 50%, rgba(0,255,221,0.18), rgba(0,0,0,0.6));
+  background: #000; /* 실제 이미지가 들어오면 가려짐 */
   overflow: hidden;
-  video, img {
+  img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -137,21 +137,9 @@ function ProjectsSection() {
         <Row ref={rowRef}>
           {items.map((p, idx) => (
             <Card key={p.title}
-              onMouseEnter={() => {
-                const v = document.getElementById(`pv-${idx}`);
-                if (v && v.tagName === 'VIDEO') v.play();
-              }}
-              onMouseLeave={() => {
-                const v = document.getElementById(`pv-${idx}`);
-                if (v && v.tagName === 'VIDEO') { v.pause(); v.currentTime = 0; }
-              }}
             >
               <Thumb>
-                {idx % 2 === 0 ? (
-                  <video id={`pv-${idx}`} muted preload="metadata" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" />
-                ) : (
-                  <img alt="thumb" src={`https://picsum.photos/seed/umc${idx}/800/600`} />
-                )}
+                <img alt="activity" src={`https://picsum.photos/seed/umc-act-${idx}/1200/800`} />
               </Thumb>
               <Info>
                 <Title>{p.title}</Title>

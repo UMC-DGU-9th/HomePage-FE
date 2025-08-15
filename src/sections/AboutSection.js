@@ -136,6 +136,28 @@ const CardDesc = styled.p`
   line-height: 1.6;
 `;
 
+// Big keywords row (simple, bold, typographic)
+const KeywordRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(1100px, 92vw);
+  margin: 18px auto 8px;
+`;
+
+const Keyword = styled.div`
+  flex: 1 1 0;
+  text-align: center;
+  font-weight: 900;
+  font-size: clamp(42px, 9vw, 120px);
+  letter-spacing: -1.5px;
+  line-height: 1;
+  color: rgba(255,255,255,0.08);
+  -webkit-text-stroke: 1px rgba(255,255,255,0.35);
+  text-shadow: 0 12px 50px rgba(0,255,221,0.08);
+`;
+
 function AboutSection() {
   const sectionRef = useRef(null);
   const beamRef = useRef(null);
@@ -206,9 +228,15 @@ function AboutSection() {
       <Title>핵심 가치</Title>
       <Subtitle>프리즘에서 흩어지는 빛처럼, 열정과 협업, 성장의 가치가 하나로 모여 동국대학교 UMC만의 결과를 만듭니다.</Subtitle>
       <Intro>UMC는 기존의 틀을 깨부수며 성장합니다.</Intro>
-      <Stats>
+      <Beam ref={beamRef} />
+      <KeywordRow>
+        {['도전', '평등', '자신감'].map((word) => (
+          <Keyword key={word}>{word}</Keyword>
+        ))}
+      </KeywordRow>
+      <Stats style={{ marginTop: 32 }}>
         {[
-          { label: '활동멤버', key: 'members' },
+          { label: '9기 활동 레코드', key: 'members' },
           { label: '프로젝트', key: 'projects' },
           { label: '스터디', key: 'studies' },
         ].map((s, i) => (
@@ -218,20 +246,6 @@ function AboutSection() {
           </Stat>
         ))}
       </Stats>
-      <Beam ref={beamRef} />
-      <Values>
-        {[
-          { icon: '⚡️', title: '열정', desc: '끝까지 파고드는 문제해결 집착과 에너지' },
-          { icon: '🤝', title: '협업', desc: '코드 리뷰와 페어 프로그래밍으로 함께 성장' },
-          { icon: '📈', title: '성장', desc: '프로덕트 중심, 실전 프로젝트로 실력 증명' },
-        ].map((item, idx) => (
-          <Card key={item.title} ref={(el) => (cardsRef.current[idx] = el)}>
-            <Icon>{item.icon}</Icon>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDesc>{item.desc}</CardDesc>
-          </Card>
-        ))}
-      </Values>
     </Section>
   );
 }
