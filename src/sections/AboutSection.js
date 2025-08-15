@@ -91,50 +91,7 @@ const StatNumber = styled.div`
   font-size: clamp(28px, 6vw, 52px);
 `;
 
-const Values = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  width: min(1024px, 92vw);
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const Card = styled.div`
-  position: relative;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px;
-  padding: 28px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-  cursor: default;
-
-  &:hover {
-    transform: translateY(-6px) scale(1.02);
-    border-color: rgba(0,255,221,0.5);
-    box-shadow: 0 10px 30px rgba(0,255,221,0.15), inset 0 0 40px rgba(0,255,221,0.08);
-  }
-`;
-
-const Icon = styled.div`
-  font-size: 2rem;
-  margin-bottom: 12px;
-`;
-
-const CardTitle = styled.h3`
-  margin: 0 0 8px 0;
-  color: #e6fff9;
-  font-size: 1.4rem;
-`;
-
-const CardDesc = styled.p`
-  margin: 0;
-  color: #b7c7d9;
-  line-height: 1.6;
-`;
+/* removed legacy card styles */
 
 // Big keywords row (simple, bold, typographic)
 const KeywordRow = styled.div`
@@ -161,7 +118,6 @@ const Keyword = styled.div`
 function AboutSection() {
   const sectionRef = useRef(null);
   const beamRef = useRef(null);
-  const cardsRef = useRef([]);
   const statRefs = useRef([]);
 
   useEffect(() => {
@@ -182,21 +138,7 @@ function AboutSection() {
         );
       }
 
-      gsap.fromTo(
-        cardsRef.current,
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 65%',
-          },
-        }
-      );
+      // removed legacy card reveal animation
 
       // 숫자 카운터 애니메이션
       const targets = [999, 432, 765];
