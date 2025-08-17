@@ -252,7 +252,7 @@ function MembersPage() {
               <AvatarContainer>
                 <Avatar src={m.avatar} alt={m.name} />
               </AvatarContainer>
-              <PartBadge part={m.part}>{m.part}</PartBadge>
+              {/* <PartBadge part={m.part}>{m.part}</PartBadge> */}
               <Name>{m.name}</Name>
               <RoleBadge>{m.role}</RoleBadge>
             </Card>
