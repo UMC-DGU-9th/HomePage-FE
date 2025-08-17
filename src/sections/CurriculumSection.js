@@ -123,23 +123,7 @@ const CardDesc = styled.p`
   line-height: 1.5;
 `;
 
-const Legend = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 18px;
-  color: #86a7a3;
-  font-size: 0.92rem;
-`;
 
-const Dot = styled.span`
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: ${p => p.color || '#00ffdd'};
-  box-shadow: 0 0 10px ${p => p.color || '#00ffdd'}55;
-`;
 
 function CurriculumSection() {
   const tabs = useMemo(() => (

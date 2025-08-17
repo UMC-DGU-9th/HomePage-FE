@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -149,14 +149,14 @@ function ProjectsSection() {
     },
   ];
 
-  const go = (n) => setIdx((p) => (n + slides.length) % slides.length);
+  const go = useCallback((n) => setIdx((p) => (n + slides.length) % slides.length), [slides.length]);
 
   // autoplay
   useEffect(() => {
     if (paused) return;
     const t = setInterval(() => go(idx + 1), 4000);
     return () => clearInterval(t);
-  }, [idx, paused]);
+  }, [idx, paused, go]);
 
   return (
     <Wrap>
