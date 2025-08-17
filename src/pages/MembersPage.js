@@ -145,32 +145,6 @@ const Name = styled.div`
 
 
 
-const getPartColor = (part) => {
-  const colors = {
-    LEADERSHIP: { bg: 'rgba(255,107,107,0.1)', border: 'rgba(255,107,107,0.3)', text: '#ff6b6b' },
-    BACKEND: { bg: 'rgba(76,175,80,0.1)', border: 'rgba(76,175,80,0.3)', text: '#4caf50' },
-    FRONTEND: { bg: 'rgba(33,150,243,0.1)', border: 'rgba(33,150,243,0.3)', text: '#2196f3' },
-    PLANNING: { bg: 'rgba(156,39,176,0.1)', border: 'rgba(156,39,176,0.3)', text: '#9c27b0' },
-    DESIGN: { bg: 'rgba(255,152,0,0.1)', border: 'rgba(255,152,0,0.3)', text: '#ff9800' },
-    MOBILE: { bg: 'rgba(0,255,221,0.1)', border: 'rgba(0,255,221,0.3)', text: '#00ffdd' },
-  };
-  return colors[part] || colors.LEADERSHIP;
-};
-
-const PartBadge = styled.div`
-  display: inline-block;
-  padding: 4px 10px;
-  background: ${props => getPartColor(props.part).bg};
-  border: 1px solid ${props => getPartColor(props.part).border};
-  border-radius: 12px;
-  color: ${props => getPartColor(props.part).text};
-  font-size: 11px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  position: relative;
-  z-index: 2;
-`;
-
 const RoleBadge = styled.div`
   display: inline-block;
   padding: 8px 16px;

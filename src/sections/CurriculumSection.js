@@ -113,22 +113,6 @@ const Tab = styled.button`
   }
 `;
 
-const Indicator = styled.div`
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  height: 44px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #00ffdd, #00a2ff);
-  box-shadow: 0 10px 30px rgba(0,255,221,0.18);
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform, width;
-  
-  @media (max-width: 768px) {
-    height: 40px;
-  }
-`;
-
 const ContentWrap = styled.div`
   margin-top: 24px;
 `;
