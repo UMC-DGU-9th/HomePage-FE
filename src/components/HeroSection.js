@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
 import { EffectComposer, Bloom, Noise, Vignette, ChromaticAberration } from '@react-three/postprocessing';
 import { BlendFunction } from 'postprocessing';
 import Prism from './Prism';
@@ -102,7 +101,10 @@ function HeroSection() {
         <Subtitle>Code the Reality, Move the World.</Subtitle>
       </TitleWrapper>
 
-      <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
+      <Canvas 
+        camera={{ position: [0, 0, 5], fov: 60 }}
+        style={{ pointerEvents: 'none' }}
+      >
         <Suspense fallback={null}>
           <ambientLight intensity={0.6} />
           <directionalLight position={[6, 6, 6]} intensity={1.1} />
@@ -117,8 +119,6 @@ function HeroSection() {
             <Vignette eskil={false} offset={0.2} darkness={0.6} />
           </EffectComposer>
         </Suspense>
-
-        <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.6} />
       </Canvas>
     </HeroContainer>
   );
