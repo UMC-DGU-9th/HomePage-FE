@@ -12,11 +12,20 @@ const Section = styled.section`
   padding: 14vh 0 16vh;
   background: radial-gradient(1000px 700px at 30% 10%, rgba(0,255,221,0.06), transparent 60%), var(--bg-base);
   mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 94%, rgba(0,0,0,0));
+  
+  @media (max-width: 768px) {
+    min-height: 100vh;
+    padding: 10vh 0 12vh;
+  }
 `;
 
 const Container = styled.div`
   width: min(1200px, 92vw);
   margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    width: 95vw;
+  }
 `;
 
 const Title = styled.h2`
@@ -24,37 +33,84 @@ const Title = styled.h2`
   color: #e6fff9;
   font-size: 2.6rem;
   text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin: 0 0 8px 0;
+  }
 `;
 
 const Sub = styled.p`
   margin: 0 0 28px 0;
   color: #9fb3c8;
   text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin: 0 0 24px 0;
+    line-height: 1.4;
+  }
 `;
 
 const Tabs = styled.div`
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
   padding: 6px;
+  
+  @media (max-width: 768px) {
+    gap: 4px;
+    padding: 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    
+    /* 스크롤바 숨기기 */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+    /* 스크롤 스냅 */
+    scroll-snap-type: x mandatory;
+  }
 `;
 
 const Tab = styled.button`
   height: 44px;
+  min-width: 70px;
+  flex: 1;
   border: 0;
   border-radius: 10px;
-  background: transparent;
+  background: ${props => (props.$active ? 'linear-gradient(90deg, #00ffdd, #00a2ff)' : 'transparent')};
   color: ${props => (props.$active ? '#001314' : '#cfe9e4')};
   font-weight: 700;
   letter-spacing: 0.2px;
   cursor: pointer;
   position: relative;
   z-index: 1;
-  transition: color 0.25s ease;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  padding: 0 8px;
+  box-shadow: ${props => (props.$active ? '0 8px 25px rgba(0,255,221,0.25)' : 'none')};
+  
+  &:hover {
+    background: ${props => (props.$active ? 'linear-gradient(90deg, #00ffdd, #00a2ff)' : 'rgba(255,255,255,0.08)')};
+    transform: ${props => (props.$active ? 'none' : 'translateY(-1px)')};
+  }
+  
+  @media (max-width: 768px) {
+    height: 40px;
+    min-width: 80px;
+    flex: 0 0 auto;
+    font-size: 0.9rem;
+    padding: 0 12px;
+    scroll-snap-align: start;
+  }
 `;
 
 const Indicator = styled.div`
@@ -62,12 +118,15 @@ const Indicator = styled.div`
   top: 6px;
   left: 6px;
   height: 44px;
-  width: calc((100% - 12px - 6 * 8px) / 7);
   border-radius: 10px;
   background: linear-gradient(90deg, #00ffdd, #00a2ff);
   box-shadow: 0 10px 30px rgba(0,255,221,0.18);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, width;
+  
+  @media (max-width: 768px) {
+    height: 40px;
+  }
 `;
 
 const ContentWrap = styled.div`
@@ -78,8 +137,16 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  @media (max-width: 960px) { grid-template-columns: repeat(2, 1fr); }
-  @media (max-width: 620px) { grid-template-columns: 1fr; }
+  
+  @media (max-width: 960px) { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 14px;
+  }
+  
+  @media (max-width: 620px) { 
+    grid-template-columns: 1fr; 
+    gap: 12px;
+  }
 `;
 
 const Card = styled.div`
@@ -92,7 +159,21 @@ const Card = styled.div`
   min-height: 92px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  &:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,255,221,0.12); }
+  
+  &:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 16px 40px rgba(0,255,221,0.12); 
+  }
+  
+  @media (max-width: 768px) {
+    padding: 16px 16px 16px 56px;
+    min-height: 80px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 14px 14px 14px 52px;
+    min-height: 76px;
+  }
 `;
 
 const Week = styled.div`
@@ -109,18 +190,44 @@ const Week = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: inset 0 0 24px rgba(0,255,221,0.22);
+  
+  @media (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+    left: 12px;
+    top: 12px;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 30px;
+    height: 30px;
+    left: 10px;
+    top: 10px;
+    font-size: 0.85rem;
+  }
 `;
 
 const CardTitle = styled.h3`
   margin: 0 0 6px 0;
   font-size: 1.05rem;
   color: #e6fff9;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin: 0 0 5px 0;
+  }
 `;
 
 const CardDesc = styled.p`
   margin: 0;
   color: #a9c3c1;
   line-height: 1.5;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 `;
 
 
@@ -259,7 +366,6 @@ function CurriculumSection() {
     gsap.fromTo(contentRef.current, { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' });
   }, [active]);
 
-  const indicatorStyle = useMemo(() => ({ transform: `translateX(calc(${active} * (100% + 8px)))` }), [active]);
   const key = tabs[active];
   const weeks = data[key];
 
@@ -270,9 +376,14 @@ function CurriculumSection() {
         <Sub>UMC 8기 실제 커리큘럼으로, 체계적인 학습을 통해 전문가로 성장합니다.</Sub>
 
         <Tabs>
-          <Indicator style={indicatorStyle} />
           {tabs.map((t, i) => (
-            <Tab key={t} $active={i === active} onClick={() => setActive(i)}>{t}</Tab>
+            <Tab 
+              key={t} 
+              $active={i === active} 
+              onClick={() => setActive(i)}
+            >
+              {t}
+            </Tab>
           ))}
         </Tabs>
 
@@ -286,8 +397,6 @@ function CurriculumSection() {
               </Card>
             ))}
           </Grid>
-
-
         </ContentWrap>
       </Container>
     </Section>

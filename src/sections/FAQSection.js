@@ -65,9 +65,22 @@ const Question = styled.button`
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.3s ease;
+  gap: 16px;
   
   &:hover {
     background: rgba(255,255,255,0.02);
+  }
+  
+  span {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.4;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 20px 24px;
+    font-size: 1rem;
+    gap: 12px;
   }
 `;
 
@@ -83,9 +96,16 @@ const Icon = styled.div`
   font-weight: 800;
   color: #001314;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  flex-shrink: 0;
   
   ${Item}.active & {
     transform: rotate(45deg);
+  }
+  
+  @media (max-width: 768px) {
+    width: 22px;
+    height: 22px;
+    font-size: 13px;
   }
 `;
 
