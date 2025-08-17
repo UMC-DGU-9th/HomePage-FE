@@ -165,49 +165,41 @@ function MembersPage() {
     {
       name: '박지현',
       role: '회장',
-      part: 'LEADERSHIP',
       avatar: '/man1.png',
     },
     {
       name: '김도훈', 
       role: '부회장',
-      part: 'LEADERSHIP',
       avatar: '/man2.png',
     },
     {
       name: '양희진',
       role: 'Spring 파트장',
-      part: 'BACKEND',
       avatar: '/girl2.png',
     },
     {
       name: '김민범',
       role: 'Node.js 파트장', 
-      part: 'BACKEND',
       avatar: '/man3.png',
     },
     {
       name: '하승연',
       role: '웹 파트장',
-      part: 'FRONTEND',
       avatar: '/girl1.png',
     },
     {
       name: '김가영',
       role: 'PM 파트장',
-      part: 'PLANNING',
       avatar: '/girl4.png',
     },
     {
       name: '오정현',
       role: '디자인 파트장',
-      part: 'DESIGN', 
       avatar: '/girl3.png',
     },
     {
       name: '김도연',
       role: 'iOS 파트장',
-      part: 'MOBILE',
       avatar: '/man4.png',
     },
   ], []);
@@ -226,7 +218,6 @@ function MembersPage() {
               <AvatarContainer>
                 <Avatar src={m.avatar} alt={m.name} />
               </AvatarContainer>
-              {/* <PartBadge part={m.part}>{m.part}</PartBadge> */}
               <Name>{m.name}</Name>
               <RoleBadge>{m.role}</RoleBadge>
             </Card>
