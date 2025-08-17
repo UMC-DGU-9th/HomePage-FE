@@ -141,7 +141,7 @@ function AboutSection() {
       // removed legacy card reveal animation
 
       // 숫자 카운터 애니메이션
-      const targets = [999, 432, 765];
+      const targets = [213, 49, 187];
       statRefs.current.forEach((el, i) => {
         if (!el) return;
         const obj = { val: 0 };
@@ -156,7 +156,7 @@ function AboutSection() {
           },
           onUpdate: () => {
             const value = Math.floor(obj.val).toLocaleString();
-            el.textContent = i === 0 ? `${value}+` : value;
+            el.textContent = i === 0 ? `${value}` : value;
           },
         });
       });
@@ -178,7 +178,7 @@ function AboutSection() {
       </KeywordRow>
       <Stats style={{ marginTop: 32 }}>
         {[
-          { label: '9기 활동 레코드', key: 'members' },
+          { label: '역대 DGUUMC 멤버수', key: 'members' },
           { label: '프로젝트', key: 'projects' },
           { label: '스터디', key: 'studies' },
         ].map((s, i) => (

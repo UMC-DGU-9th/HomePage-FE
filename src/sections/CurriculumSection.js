@@ -35,7 +35,7 @@ const Sub = styled.p`
 const Tabs = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 8px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
@@ -62,7 +62,7 @@ const Indicator = styled.div`
   top: 6px;
   left: 6px;
   height: 44px;
-  width: calc((100% - 12px - 5 * 8px) / 6);
+  width: calc((100% - 12px - 6 * 8px) / 7);
   border-radius: 10px;
   background: linear-gradient(90deg, #00ffdd, #00a2ff);
   box-shadow: 0 10px 30px rgba(0,255,221,0.18);
@@ -143,57 +143,108 @@ const Dot = styled.span`
 
 function CurriculumSection() {
   const tabs = useMemo(() => (
-    ['iOS', 'Android', 'Web', 'Server', 'PM', 'Design']
+    ['Plan', 'Design', 'Web', 'Android', 'iOS', 'Node.js', 'Spring']
   ), []);
 
   const data = useMemo(() => ({
-    iOS: [
-      { t: 'Swift 기초 · Xcode', d: '문법/옵셔널/컬렉션 · Xcode 프로젝트 구조' },
-      { t: 'UIKit 레이아웃', d: 'AutoLayout, StackView, TableView' },
-      { t: '네트워킹', d: 'URLSession, REST, 비동기/Combine 맛보기' },
-      { t: '상태관리', d: 'MVVM, Coordinator 패턴' },
-      { t: 'SwiftUI 입문', d: 'Declarative UI, NavigationStack' },
-      { t: '프로덕트 실습', d: '실전 앱 구조 설계 & 배포 파이프라인' },
-    ],
-    Android: [
-      { t: 'Kotlin 기초', d: 'Null-safety, Coroutines' },
-      { t: 'Compose UI', d: '레이아웃/상태/네비게이션' },
-      { t: '네트워킹', d: 'Retrofit, OkHttp, Flow' },
-      { t: '아키텍처', d: 'MVVM, Hilt DI' },
-      { t: '테스트', d: 'Unit/UI 테스트' },
-      { t: '프로덕트 실습', d: '실전 앱 구조 설계 & Play 배포' },
-    ],
-    Web: [
-      { t: 'HTML/CSS/JS', d: '시맨틱/반응형/ESNext' },
-      { t: 'React 기본', d: '컴포넌트/상태/라우팅' },
-      { t: '상태관리', d: 'Context/Zustand/Redux 중 택1' },
-      { t: 'API/데이터', d: 'React Query, 에러/로딩 전략' },
-      { t: '성능/애니', d: 'Code-splitting, GSAP/Framer' },
-      { t: '프로덕트 실습', d: '실전 배포(Vercel) & 접근성' },
-    ],
-    Server: [
-      { t: '언어/프레임워크', d: 'Node/Nest or Spring 중 택1' },
-      { t: 'DB/ORM', d: 'RDB 기초, Prisma/JPA' },
-      { t: 'REST/Swagger', d: 'API 설계/문서화' },
-      { t: '인증/보안', d: 'JWT, 세션, CORS' },
-      { t: '배포', d: 'Docker, CI/CD' },
-      { t: '프로덕트 실습', d: '실전 운영/로깅/모니터링' },
-    ],
-    PM: [
-      { t: '문제정의', d: 'JTBD, 페르소나' },
-      { t: '가설/실험', d: 'MVP, 실험 설계' },
-      { t: 'UX 흐름', d: '플로우/IA/스토리보드' },
-      { t: '우선순위', d: 'RICE/Impact Effort' },
-      { t: '데이터', d: '메트릭/분석/리텐션' },
-      { t: '런치', d: '릴리즈/회고/로드맵' },
+    Plan: [
+      { t: 'IT 기획자란?', d: '(선택) 기획자의 역할과 필요 역량 이해' },
+      { t: '가설 설정 및 검증', d: '문제 정의와 가설 수립, 검증 방법론' },
+      { t: '전략 수립', d: '비즈니스 전략과 제품 전략 수립' },
+      { t: '역기획', d: '기존 서비스 분석 및 개선점 도출' },
+      { t: '서비스 기획 (1/2)', d: '서비스 컨셉 설정 및 핵심 기능 정의' },
+      { t: '서비스 기획 (2/2)', d: '상세 기능 명세 및 사용자 시나리오' },
+      { t: '와이어 프레임 작성', d: '정보 구조 설계 및 와이어프레임 제작' },
+      { t: '화면 설계서 작성', d: '상세 화면 설계 및 인터랙션 정의' },
+      { t: '프로젝트 관리 및 협업', d: '일정 관리, 리소스 배분, 팀 커뮤니케이션' },
+      { t: '최종 기획안 점검 및 피드백', d: '기획안 검토 및 개선사항 반영' },
+      { t: '프로젝트 종료 및 회고', d: '프로젝트 완료 및 성과 분석, 회고' },
     ],
     Design: [
-      { t: 'Foundations', d: '타이포/컬러/그리드' },
-      { t: 'Figma', d: '컴포넌트/오토레이아웃' },
-      { t: '인터랙션', d: '모션/마이크로 인터랙션' },
-      { t: '디자인시스템', d: '토큰/모듈러 스케일' },
-      { t: '핸드오프', d: '개발 협업/어노테이션' },
-      { t: '프로덕트 실습', d: '실전 디자인/프로토타이핑' },
+      { t: '피그마 기초 학습', d: '(선택) Figma 기본 기능 및 인터페이스 학습' },
+      { t: '클론 디자인 part1', d: '기존 서비스 UI 분석 및 클론 작업 시작' },
+      { t: '클론 디자인 part2', d: '클론 디자인 완성 및 디테일 보완' },
+      { t: '리디자인 선정 및 문제 분석 part1', d: '리디자인 대상 선정 및 문제점 파악' },
+      { t: '리디자인 문제 분석 part2 및 솔루션 도출', d: '심화 분석 및 개선 방향 설정' },
+      { t: '와이어 프레임 및 디자인 시스템 제작', d: '정보 구조 설계 및 디자인 시스템 구축' },
+      { t: 'UI 디자인', d: '실제 UI 화면 디자인 작업' },
+      { t: 'UI 디자인 마무리 및 프로토타입', d: '디자인 완성 및 인터랙션 프로토타입' },
+      { t: 'UMC 항공 로고 디자인 및 디자인 시스템 제작', d: '브랜드 아이덴티티 및 시스템 구축' },
+      { t: 'UMC 항공 UI 디자인', d: '항공사 서비스 UI 디자인 프로젝트' },
+      { t: '포트폴리오 작성 및 굿즈 디자인', d: '작품 정리 및 브랜드 굿즈 디자인' },
+    ],
+    Web: [
+      { t: 'HTML, CSS, JavaScript 기초', d: '(선택) React 사전 필수 지식 학습' },
+      { t: 'TypeScript의 기본', d: 'TypeScript 문법 및 타입 시스템' },
+      { t: 'React 맛보기', d: 'tsx, useState, contextAPI 기본 개념' },
+      { t: 'Tailwind CSS, React Router, API 통신', d: 'useEffect, type 활용한 실전 개발' },
+      { t: '상세 페이지 제작 및 커스텀 훅', d: 'useNavigate, useParams, useLocation 활용' },
+      { t: 'React 폼 유효성 검사', d: 'useForm, react-hook-form, Zod 완전 정복' },
+      { t: 'API 호출 최적화 및 검색 페이지', d: 'Multi Step Form 활용 회원가입 개선' },
+      { t: 'TanStack Query 완전 정복', d: 'useQuery & useInfiniteQuery 활용' },
+      { t: 'React 서버 상태 관리', d: 'useMutation과 Optimistic Update' },
+      { t: 'Redux Toolkit / Zustand', d: '전역 상태 관리 라이브러리 활용' },
+      { t: '최적화된 React 앱 만들기', d: 'useMemo, memo, useCallback 성능 최적화' },
+      { t: 'React 웹 사이트 배포하기', d: '(선택) 실제 서비스 배포 과정' },
+      { t: 'PWA & WebView 실전 가이드', d: '(선택) 모바일 웹앱 개발' },
+    ],
+    Android: [
+      { t: 'Android for Beginner', d: '(선택) 안드로이드 개발 기초 개념' },
+      { t: 'Platform & Layout', d: '안드로이드 플랫폼 이해 및 레이아웃 시스템' },
+      { t: 'Activity와 Fragment', d: '화면 구성 요소 및 생명주기 이해' },
+      { t: 'Essential Widget Compilation', d: '필수 UI 컴포넌트 활용법' },
+      { t: 'Thread & Coroutine', d: '비동기 처리 및 코루틴 활용' },
+      { t: 'LifeCycle', d: '안드로이드 컴포넌트 생명주기 관리' },
+      { t: 'RecyclerView & Adapter', d: '리스트 UI 구현 및 데이터 바인딩' },
+      { t: 'Database', d: '로컬 데이터베이스 연동 및 관리' },
+      { t: 'Token', d: '인증 토큰 관리 및 보안' },
+      { t: 'Network & RESTful API', d: '서버 통신 및 REST API 연동' },
+      { t: 'Social Login', d: '소셜 로그인 구현 및 사용자 인증' },
+    ],
+    iOS: [
+      { t: 'iOS란?', d: '(선택) iOS 개발 환경 및 기초 개념' },
+      { t: 'SwiftUI 기본 개념 및 환경 설정', d: 'SwiftUI 프레임워크 기초 및 개발 환경' },
+      { t: 'SwiftUI의 상태 및 데이터 관리', d: 'State, Binding + 레이아웃 시스템' },
+      { t: '리스트 및 데이터 바인딩 + 네비게이션', d: '동적 UI 구성 및 화면 전환' },
+      { t: 'OCR 및 카메라 기능 활용', d: '텍스트 인식 및 카메라 API 활용' },
+      { t: 'Apple 지도 및 위치 정보 활용', d: 'MapKit 및 위치 서비스 구현' },
+      { t: '푸시 알림 (FCM, APNs)', d: '푸시 알림 시스템 구축 및 관리' },
+      { t: 'SwiftUI에서 네트워크 통신 (Alamofire)', d: 'HTTP 통신 및 API 연동 기초' },
+      { t: 'SwiftUI에서 네트워크 통신 (Moya)', d: '고급 네트워크 레이어 구축' },
+      { t: 'SwiftUI에서의 비동기 처리 및 Combine', d: '반응형 프로그래밍 및 데이터 스트림' },
+      { t: 'Swift Charts를 활용한 데이터 시각화', d: '차트 구현 및 퍼포먼스 최적화' },
+      { t: 'SwiftUI에서 앱 내 결제 (IAP)', d: '(선택) In-App Purchase 구현' },
+      { t: '협업 가이드라인 & 애플리케이션 배포', d: '(선택) 팀 개발 및 앱스토어 배포' },
+    ],
+    'Node.js': [
+      { t: '서버 처음 해보기', d: '(선택) 백엔드 개발 기초 개념' },
+      { t: 'Database 설계', d: '데이터베이스 모델링 및 스키마 설계' },
+      { t: '실전 SQL - 어떤 Query를 작성해야 할까?', d: 'SQL 쿼리 작성 및 최적화 기법' },
+      { t: 'API URL의 설계 & 프로젝트 세팅', d: 'RESTful API 설계 원칙 및 환경 구축' },
+      { t: 'ES6와 프로젝트 파일 구조의 이해', d: '모던 자바스크립트 및 프로젝트 구조' },
+      { t: 'API 및 프로젝트 설정 기초', d: 'Express 기반 API 서버 구축' },
+      { t: 'ORM 사용해보기', d: 'Sequelize/Prisma ORM 활용' },
+      { t: 'Express 미들웨어 & API 응답 통일 & 에러 핸들링', d: '미들웨어 활용 및 에러 처리' },
+      { t: '프론트엔드 연동과 Swagger', d: 'API 문서화 및 클라이언트 연동' },
+      { t: '로그인 및 회원 가입 기능 구현', d: 'JWT 인증 및 사용자 관리' },
+      { t: 'AWS (VPC & Internet Gateway & EC2)', d: '클라우드 인프라 구축' },
+      { t: 'CI/CD (GitHub Actions + AWS EC2)', d: '(선택) 자동 배포 파이프라인' },
+      { t: 'TypeScript 적용해보기', d: '(선택) 타입스크립트 서버 개발' },
+    ],
+    Spring: [
+      { t: '서버 처음 해보기', d: '(선택) 백엔드 개발 기초 개념' },
+      { t: 'Database 설계', d: '데이터베이스 모델링 및 스키마 설계' },
+      { t: '실전 SQL - 어떤 Query를 작성해야 할까?', d: 'SQL 쿼리 작성 및 최적화 기법' },
+      { t: 'API URL의 설계 & 프로젝트 세팅', d: 'RESTful API 설계 원칙 및 환경 구축' },
+      { t: 'Spring Boot의 코어 개념', d: '스프링 부트 핵심 개념 이해' },
+      { t: 'JPA 기초 및 프로젝트 구조', d: 'JPA ORM 활용 데이터 접근' },
+      { t: 'JPA 활용', d: 'JPA 고급 기능 및 최적화' },
+      { t: 'API 응답 통일 & 에러 핸들러', d: '통합 예외 처리 및 응답 형식' },
+      { t: 'API & Swagger & Annotation', d: '어노테이션 기반 API 개발' },
+      { t: 'API & Paging', d: '페이징 처리 및 대용량 데이터 관리' },
+      { t: '로그인 및 회원 가입', d: 'JWT 인증 및 사용자 관리' },
+      { t: 'CI/CD (GitHub Actions + AWS EC2)', d: '(선택) 자동 배포 파이프라인' },
+      { t: 'AWS S3 파일 업로드', d: '(선택) 클라우드 스토리지 연동' },
     ],
   }), []);
 
@@ -232,7 +283,7 @@ function CurriculumSection() {
     <Section ref={sectionRef}>
       <Container>
         <Title>파트별 커리큘럼</Title>
-        <Sub>실전 중심 로드맵으로, 6주 만에 프로덕트 레벨에 도달합니다.</Sub>
+        <Sub>UMC 8기 실제 커리큘럼으로, 체계적인 학습을 통해 전문가로 성장합니다.</Sub>
 
         <Tabs>
           <Indicator style={indicatorStyle} />
@@ -252,11 +303,7 @@ function CurriculumSection() {
             ))}
           </Grid>
 
-          <Legend>
-            <span><Dot color="#00ffdd" /> 핵심</span>
-            <span><Dot color="#00a2ff" /> 실습</span>
-            <span><Dot color="#ffd166" /> 팀 협업</span>
-          </Legend>
+
         </ContentWrap>
       </Container>
     </Section>
