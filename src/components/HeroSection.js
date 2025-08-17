@@ -119,7 +119,7 @@ function HeroSection() {
             <Vignette eskil={false} offset={0.2} darkness={0.6} />
           </EffectComposer>
         </Suspense>
-      </Canvas>
+      </Canvas> 
     </HeroContainer>
   );
 }
