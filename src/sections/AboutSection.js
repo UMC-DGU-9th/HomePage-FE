@@ -178,7 +178,7 @@ function AboutSection() {
       </KeywordRow>
       <Stats style={{ marginTop: 32 }}>
         {[
-          { label: '역대 DGUUMC 멤버수', key: 'members' },
+          { label: '역대 DGU-UMC 멤버수', key: 'members' },
           { label: '프로젝트', key: 'projects' },
           { label: '스터디', key: 'studies' },
         ].map((s, i) => (

@@ -114,7 +114,7 @@ function ActivitiesSection() {
             target="_blank" 
             rel="noopener noreferrer"
           >
-            👉 UMC OB 프로젝트 보기
+           UMC OB 프로젝트 보기
           </LinkButton>
         </LinkContainer>
       </Container>

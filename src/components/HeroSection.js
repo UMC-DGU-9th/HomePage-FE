@@ -61,7 +61,6 @@ const TitleWrapper = styled.div`
   text-align: center;
   color: white;
   z-index: 10;
-  pointer-events: none;
 `;
 
 const MainTitle = styled.h1`
@@ -79,16 +78,36 @@ const MainTitle = styled.h1`
   }
 `;
 
-const Subtitle = styled.p`
-  font-size: 1.25rem;
-  margin-top: 1rem;
-  font-weight: 300;
-  color: #cbd5e1;
+const SupportButton = styled.a`
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #00ffdd, #00a2ff);
+  color: #001314;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
   letter-spacing: 0.5px;
-  text-shadow: 0 0 20px rgba(0,255,221,0.15);
-
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 255, 221, 0.3);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 221, 0.4);
+  }
+  
+  &:active {
+    transform: translateY(0);
+    transition: all 0.1s ease;
+  }
+  
   @media (max-width: 768px) {
+    padding: 14px 28px;
     font-size: 1rem;
+    margin-top: 1.2rem;
   }
 `;
 
@@ -98,7 +117,9 @@ function HeroSection() {
       <GlobalStyle />
       <TitleWrapper>
         <MainTitle>DONGGUK UMC</MainTitle>
-        <Subtitle>Code the Reality, Move the World.</Subtitle>
+        <SupportButton href="https://bit.ly/3JpzJKR" target="_blank" rel="noopener noreferrer">
+          지원하기
+        </SupportButton>
       </TitleWrapper>
 
       <Canvas 

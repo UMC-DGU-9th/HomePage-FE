@@ -144,10 +144,10 @@ const Card = styled.div`
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
-  &:hover { 
-    transform: translateY(-4px); 
-    box-shadow: 0 16px 40px rgba(0,255,221,0.12); 
-  }
+  // &:hover { 
+  //   transform: translateY(-4px); 
+  //   box-shadow: 0 16px 40px rgba(0,255,221,0.12); 
+  // }
   
   @media (max-width: 768px) {
     padding: 16px 16px 16px 56px;
@@ -357,7 +357,7 @@ function CurriculumSection() {
     <Section ref={sectionRef}>
       <Container>
         <Title>파트별 커리큘럼</Title>
-        <Sub>UMC 8기 실제 커리큘럼으로, 체계적인 학습을 통해 전문가로 성장합니다.</Sub>
+        <Sub>UMC 9기 실제 커리큘럼으로, 체계적인 학습을 통해 전문가로 성장합니다.</Sub>
 
         <Tabs>
           {tabs.map((t, i) => (
