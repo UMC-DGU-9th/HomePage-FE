@@ -266,7 +266,7 @@ function CurriculumSection() {
       { t: 'React 성능 최적화', d: 'useMemo, memo, useCallback 활용' },
     ],
     Android: [
-      { t: '선택 Android for Beginner', d: '안드로이드 개발 기초 개념' },
+      { t: 'Android for Beginner', d: '안드로이드 개발 기초 개념' },
       { t: 'Platform & Layout', d: '안드로이드 플랫폼 이해 및 레이아웃 시스템' },
       { t: 'Activity와 Fragment', d: '화면 구성 요소 및 생명주기 이해' },
       { t: 'Essential Widget Compilation', d: '필수 UI 컴포넌트 활용법' },
