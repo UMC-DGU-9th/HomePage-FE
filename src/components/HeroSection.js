@@ -117,7 +117,7 @@ function HeroSection() {
       <GlobalStyle />
       <TitleWrapper>
         <MainTitle>DONGGUK UMC</MainTitle>
-        <SupportButton href="https://bit.ly/3JpzJKR" target="_blank" rel="noopener noreferrer">
+        <SupportButton href="https://forms.gle/ZuMDZLrpjFAsMGDq8" target="_blank" rel="noopener noreferrer">
           지원하기
         </SupportButton>
       </TitleWrapper>
